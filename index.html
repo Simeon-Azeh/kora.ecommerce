@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kora</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rasa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rasa', serif;
+    }
+    body {
+        background: #f9f9f9;
+    }
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+    background: #fff;
+    box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    }
+    #header img {
+        width: 100%;
+        height: 80px;
+        margin-left: -100px;
+    }
+    #navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #navbar li {
+        list-style: none;
+        position: relative;
+        padding: 0 20px;
+        margin-right: 20px;
+    }
+
+    #navbar li a{
+        text-decoration: none;
+        font-size: 18px;
+        color: #ff3131;
+        font-weight: 500;
+        transition: all 0.4s ease;
+    }
+    
+    #navbar li a:hover,
+    #navbar li a.active {
+        color: #696969;
+    }
+    #navbar li a.active::after,
+    #navbar li a:hover::after {
+        content: "";
+        width: 30%;
+        height: 2px;
+        background: #0cc0df;
+        position: absolute;
+        bottom: -4px;
+        left: 20px;
+    }
+#mobile {
+    display: none;
+    align-items: center;
+}
+#close {
+    display: none;
+}
+button.normal {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: #fff;
+    background-color: #ff3131;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.2s ease;
+}
+button.white {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 15px;
+    color: #fff;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid #fff;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+#hero {
+    background: url("images/home1.svg");
+    height: 90vh;
+    background-position: top 25% right 0;
+    background-size: cover;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+}
+#hero h4 {
+    padding-bottom: 5px;
+    font-size: 14px;
+    color: #696969;
+}
+
+#hero h2 {
+    color: #ff3131;
+    font-size: 100px;
+    line-height: 80px;
+}
+
+#hero h1 {
+    font-weight: 400px;
+    margin-top: 10px;
+}
+#hero button {
+    margin-top: 10px;
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #ff3131;
+    color: #f9f9f9;
+    border: none;
+    border-radius: 1px solid #ff3131;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#hero button:hover {
+    box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.05);
+}
+#hero i {
+    font-size: 16px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+#hero .fa-arrow-right {
+    margin-top: 0;
+}
+#feature {
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.section-p1 {
+    padding: 40px 80px;
+    }
+.section-p1 .fe-box img {
+    margin-bottom: -10px;
+    max-width: 100%;
+    height: 110px;
+}
+#feature .fe-box {
+    width: 140px;
+    text-align: center;
+    padding: 25px 15px;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 15px 0;
+    transition: 0.3s ease;
+}
+
+#feature .fe-box:hover {
+    box-shadow: 10px 10px 54px rgba(70, 622, 211, 0.1);
+}
+
+#feature .fe-box h6 {
+    display: inline-block;
+    padding: 9px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: #f9f9f9;
+    background-color: #ff3131;
+    font-size: 12px;
+}
+#product1 {
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.section-col {
+    background-color: #fff;
+}
+#product1 h2 {
+    color: #ff3131;
+}
+
+#product1 .pro-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+#product1 .pro {
+    position: relative;
+    width: 23%;
+    min-width: 250px;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 22px;
+    border: 1px solid #ccc;
+    margin: 15px 0;
+    box-shadow: 0px 20px 20px 0 rgba(0, 0, 0, 0.02);
+    transition: 0.3s ease;
+}
+#product1 .pro:hover {
+    box-shadow: 0px 20px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+#product1 .pro img {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+#product1 .pro .des {
+    text-align: start;
+    padding: 10px 0;
+}
+
+#product1 .pro .des span {
+    color: #ff3131;
+    font-size: 16px;
+}
+#product1 .pro .des h5 {
+    padding-top: 7px;
+    color: #696969;
+    font-size: 16px;
+}
+
+#product1 .pro .des i {
+    font-size: 12px;
+    color: #ff3131;
+}
+#product1 .pro .des h4 {
+    padding-top: 7px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #696969;
+}
+
+#product1 .pro .cart {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #ff3131;
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+#scrollToTopButton {
+    display: none; /* Initially hide the button */
+    position: fixed;
+    bottom: 20px;
+    right: 30px; /* Adjust the right position */
+    background-color: #ff3131; /* Button background color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 10px; /* Make it a circle */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 99; /* Ensure it's above other content */
+    transition: 0.5s ease ;
+    font-weight: 600;
+}
+        #scrollToTopButton i {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#scrollToTopButton:hover {
+    color: #333;
+    background-color: #0cc0df; /* Hover color */
+}
+.section-m1 {
+    margin: 40px 0;
+}
+
+#banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("images/banner2.svg");
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#banner h4 {
+    color: #ff3131;
+    font-size: 20px;
+}
+
+#banner h2 {
+    color: #ff3131;
+    font-size: 56px;
+    padding: 10px 0;
+}
+
+#banner h2 span {
+    color: #0cc0df;
+}
+#banner button:hover {
+    color: #333;
+    background-color: #0cc0df;
+}
+#sm-banner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#sm-banner .banner-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-image: url("images/banner3.svg");
+    min-width: 550px;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+}
+#sm-banner .banner-box2 {
+    background-image: url("images/banner4.svg");
+}
+
+#sm-banner h4 {
+    color: #f9f9f9;
+    font-size: 20px;
+    font-weight: 600;
+}
+#sm-banner h2 {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 800;
+}
+#sm-banner span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+#sm-banner .banner-box:hover button {
+    background-color: #fff;
+    color: #ff3131;
+
+}
+#banner3 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 80px;
+}
+
+#banner3 .banner-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-image: url("images/banner5.svg");
+    min-width: 30%;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+}
+
+
+#banner3 h2 {
+    color: #ff3131;
+    background-color: #fff;
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+#banner3 h3 {
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+}
+#banner3 .banner-box2 {
+    background-image: url("images/banner6.svg");
+}
+
+#banner3 .banner-box3 {
+    background-image: url("images/banner7.svg");
+}
+#newsletter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: url("images/banner8.svg");
+    background-repeat: no-repeat;
+    background-position: 20% 30%;
+}
+#newsletter h4 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ff3131;
+}
+#newsletter p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #696969;
+}
+#newsletter p span {
+    color: #0cc0df;
+}
+#newsletter .form{
+    width: 40%;
+    display: flex;
+}
+#newsletter input {
+    height: 3.125rem;
+    padding: 0 1.25em;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+
+#newsletter button {
+    white-space: nowrap;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#img-logo {
+    width: 100%;
+    height: 50px;
+}
+.img-con img {
+    max-width: 100%;
+}
+#apple-l {
+    height: 40px;
+}
+#google-l {
+    height: 60px;
+}
+#gateway-l {
+    height: 120px;
+    margin-top: -40px;
+    margin-left: -5px;
+}
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+}
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+footer .logo {
+    margin-bottom: 30px;
+    margin-left: -40px;
+}
+
+footer h4 {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+footer p {
+    font-size: 13px;
+    margin: 0 0 8px 0;
+}
+
+footer a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #696969;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+footer .follow {
+    margin-top: 20px;
+}
+footer .follow i {
+    color: #696969;
+    padding-right: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+footer .install .row {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+footer .install img {
+    margin: 10px 0 15px 0;
+}
+footer .follow i:hover, 
+footer a:hover {
+    color: #ff3131;
+}
+footer .copyright {
+    width: 100%;
+    text-align: center;
+}
+@media (max-width:799px) {
+    .section-p1 {
+        padding: 40px 40px;
+    }
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        height: 100vh;
+        width: 300px;
+        background-color: #fff;
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+        padding: 80px 0 0 10px;
+        transition: 0.3s;
+    }
+    #navbar li {
+        margin-bottom: 25px;
+    }
+    #mobile {
+        display: flex;
+        align-items: center;
+    }
+    #mobile i {
+        color: #333;
+        font-size: 24px;
+        padding-left: 20px;
+    }
+    #close {
+        display: initial;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: #333;
+        font-size: 24px;
+    }
+    #navbar.active {
+        right: 0px;
+    }
+    #lg-bag {
+        display: none;
+    }
+    #hero {
+        height: 80vh;
+        padding: 0 80px;
+        background-image: url("images/bannersm.svg");
+        background-position: top 100% right 10%;
+    }
+    #hero h2 {
+        font-size: 65px;
+        line-height: 60px;
+    }
+    #feature {
+        justify-content: center;
+    }
+    #feature .fe-box {
+        margin: 15px 15px;
+    }
+    #product1 ,.pro-container {
+        justify-content: center;
+    }
+    #product1 .pro {
+        margin: 45px;
+    }
+    #banner {
+        height: 20vh;
+    }
+    #banner h2 {
+        font-size: 32px;
+    }
+    #sm-banner .banner-box {
+        min-width: 100%;
+        height: 30vh;
+        margin-bottom: 20px;
+    }
+    #banner3 .banner-box {
+        width: 28%;
+    }
+    #newsletter .form {
+        width: 65%;
+        margin-top: 20px;
+    }
+}
+@media (max-width: 499px) {
+    #hero {
+        padding: 0 30px;
+        background-image: url("images/bannersm4.svg");
+       
+    }
+    .section-p1 {
+        padding: 20px;
+    }
+    #hero h2 {
+    font-size: 45px;
+    line-height: 40px;
+}
+    #product1 .pro {
+        width: 100%;
+    }
+    #banner {
+        height: 40vh;
+    }
+    #sm-banner .banner-box {
+        height: 40vh;
+    }
+    #sm-banner .banner-box2 {
+        margin-top: 20px;
+    }
+    #banner3 {
+    padding: 0 20px;
+}
+#banner3 .banner-box {
+    width: 100%;
+}
+#newsletter {
+    padding: 40px 20px;
+}
+#newsletter .form {
+    width: 100%;
+}
+footer .copyright {
+    text-align: start;
+}
+#product1 .pro-container {
+    padding-top: 10px;
+  
+}
+#banner h2 {
+    font-size: 28px;
+}
+}
+</style>
+<body>
+    <section id="header">
+        <a href="#"><img src="images/logo.svg" class="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li id="lg-bag"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h4>Trade-in-offer</h4>
+        <h2>Exclusive <br> African wears</h2>
+        <p>save more with coupons & upto 70% discount</p>
+        <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="images/free.svg">
+            <h6>Free shipping</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="images/secured.svg">
+            <h6>Secured payment</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="images/variety.svg">
+            <h6>Wide variety</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="images/discounts.svg">
+            <h6>Discounts & Promotions</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="images/reliability.svg">
+            <h6>Reliability</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="images/support.svg">
+            <h6>24/7 support</h6>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>New Arrivals</h2>
+        <p>Find the lastest trend of African wears</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="images/asante.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>South African blanche</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 25000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/ethopian.svg" alt="asante">
+                <div class="des">
+                    <span>Ubuntu</span>
+                    <h5>Ethopian croache</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>RWF 10000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/elegance.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>South African elegance</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>RWF 22000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/simple.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Simple Rwandan crok</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 5000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/angola.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Angolan jupi</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 120000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/kenya.svg" alt="asante">
+                <div class="des">
+                    <span>K-custom</span>
+                    <h5>Kenyan custom hoody</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 25000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/simplemen.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Simple African t-shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 10000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/simpleeleg.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Simply elegance</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 22000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="banner" class="section-m1">
+        <h4>Exclusive wears</h4>
+        <h2>Upto <span>70% off</span> all African classics</h2>
+        <button class="normal">Explore more</button>
+    </section>
+
+    <section id="product1" class="section-p1 section-col">
+        <h2>Foreign Fashion</h2>
+        <p>Find the lastest trend of non-African wears</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="images/others1.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>South African tshirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 25000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/others2.svg" alt="asante">
+                <div class="des">
+                    <span>Ubuntu</span>
+                    <h5>Ethopian croache</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>RWF 10000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/others3.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>South African elegance</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>RWF 22000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/others4.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Simple Rwandan crok</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 5000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/others6.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Angolan jupi</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 120000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/others7.svg" alt="asante">
+                <div class="des">
+                    <span>K-custom</span>
+                    <h5>Kenyan custom hoody</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 25000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/others8.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Simple African t-shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 10000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="images/simpleeleg.svg" alt="asante">
+                <div class="des">
+                    <span>Asante</span>
+                    <h5>Simply elegance</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                    </div>
+                    <h4>RWF 22000</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <h4>Crazy deals</h4>
+            <h2>Get 40% discounts on purchase +2</h2>
+            <span>The best deals lie within our shop section, Get wholesome discount on all purchases</span>
+            <button class="white">Learn more</button>
+        </div>
+
+        <div class="banner-box banner-box2">
+            <h4>Black Fridays</h4>
+            <h2>70% discounts on all purchases</h2>
+            <span>The best deals lie within our shop section, Get wholesome discount on all purchases</span>
+            <button class="white">Collections</button>
+        </div>
+    </section>
+
+    <section id="banner3">
+
+        <div class="banner-box">
+            <h2>Cameroon's classics</h2>
+            <h3>Custom made traditional designs from Cameroon</h3>
+        </div>
+
+        <div class="banner-box banner-box2">
+            <h2>Naija's classics</h2>
+            <h3>Custom made traditional designs from Nigeria</h3>
+        </div>
+
+        <div class="banner-box banner-box3">
+            <h2>Kenya's classics</h2>
+            <h3>Custom made traditional designs from Kenya</h3>
+        </div>
+    </section>
+
+<section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+        <h4>Sign up for our Newsletter</h4>
+        <p>Get email updates about latest trends & <span>special offers.</span></p>
+    </div>
+    <div class="form">
+        <input type ="text" placeholder="Enter your email">
+        <button class="normal">Sign up</button>
+    </div>
+</section>
+    <button id="scrollToTopButton" onclick="scrollToTop()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+
+
+<footer class="section-p1 img-con">
+    <div class="col">
+        <img id="img-logo" class="logo" src="images/logo.svg">
+        <h4>Contact</h4>
+        <p><strong>Address: </strong>Kg 168, Bumbogo, Rwanda</p>
+        <p><strong>Phone: </strong>+250 798654693</p>
+        <p><strong>Hours: </strong>Mon - Sat, 08:00am - 05:00pm</p>
+
+        <div class="follow">
+            <h4>Follow us</h4>
+            <div class="icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-square-x-twitter"></i>
+                <i class="fa-brands fa-pinterest"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms and conditions</a>
+        <a href="#">Contact us</a>
+    </div>
+
+    <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign in</a>
+        <a href="#">View cart</a>
+        <a href="#">My wishlist</a>
+        <a href="#">Track my order</a>
+        <a href="#">Help</a>
+    </div>
+
+    <div class="col install">
+        <h5>Secured payment Gateways</h5>
+        <img id="gateway-l" src="images/getway.png" alt="">
+    </div>
+    <div class="copyright">
+        <p>&copy; Simeon Azeh Kongnyuy 2023 - Available for sale
+        </p>
+    </div>
+</footer>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Add smooth scrolling behavior
+            });
+        }
+    
+        // Show the scroll-to-top button when the user scrolls down
+        window.onscroll = function () {
+            scrollFunction();
+        };
+    
+        function scrollFunction() {
+            var scrollToTopButton = document.getElementById("scrollToTopButton");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopButton.style.display = "block";
+            } else {
+                scrollToTopButton.style.display = "none";
+            }
+        }
+    </script>  
+
+    <!--Javascript for toggling navbar on smaller screen-->
+    <script>
+        const bar = document.getElementById('bar');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+
+        if (bar) {
+            bar.addEventListener ('click', () =>{
+                nav.classList.add('active')
+            })
+        }
+
+        if (close) {
+            close.addEventListener ('click', () => {
+                nav.classList.remove('active');
+            })
+        }
+    </script>
+</body>
+</html>
